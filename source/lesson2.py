@@ -1,14 +1,16 @@
-##### Convert image to Grayscale ######
-
+###### Crop & Resize image ######
 import cv2
 
 image = cv2.imread("document.jpg")
 
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+cropped = image[100:500, 100:500] # Crop the image from y=100 to y=500 and x=100 to x=500 
 
-## show image ##
-cv2.imshow("Original", image)
-cv2.imshow("Gray", gray)
+cv2.imshow("Crop", cropped)
+
+######
+resized = cv2.resize(image, (800,600))
+
+cv2.imshow("Resize", resized)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
