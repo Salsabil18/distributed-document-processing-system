@@ -16,5 +16,7 @@ Start learning OCR and build the graduation project from scratch
 
 -Installed Matplotlib  (pip install matplotlib)
 
+-Add Arabic language file (ara.tranddata) to tessdata
+
 ## Next Tasks 
 -Read the first image using OpenCV
