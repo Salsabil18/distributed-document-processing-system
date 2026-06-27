@@ -12,6 +12,8 @@ Start learning OCR and build the graduation project from scratch
 
 -Installed OpenCV
 
+pip install opencv-python
+
 -Installed Numpy
 
 -Installed Matplotlib
