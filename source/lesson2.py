@@ -1,4 +1,4 @@
-##### transform image to Grayscale ######
+##### Convert image to Grayscale ######
 
 import cv2
 
