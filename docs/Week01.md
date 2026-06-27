@@ -10,13 +10,11 @@ Start learning OCR and build the graduation project from scratch
 
 -Installed Python
 
--Installed OpenCV
+-Installed OpenCV  (pip install opencv-python)
 
-pip install opencv-python
+-Installed Numpy   (pip install numpy)
 
--Installed Numpy
-
--Installed Matplotlib
+-Installed Matplotlib  (pip install matplotlib)
 
 ## Next Tasks 
 -Read the first image using OpenCV
