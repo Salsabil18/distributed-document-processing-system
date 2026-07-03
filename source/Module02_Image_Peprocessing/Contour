@@ -1,0 +1,53 @@
+
+import cv2
+
+image = cv2.imread("document.jpg")
+
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+_, thresh = cv2.threshold(
+    gray,
+    0,
+    255,
+    cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU
+)
+
+contours, hierarchy = cv2.findContours(
+    thresh,
+    cv2.RETR_EXTERNAL,
+    cv2.CHAIN_APPROX_SIMPLE
+)
+
+output = image.copy()
+
+for contour in contours:
+
+    x, y, w, h = cv2.boundingRect(contour)
+
+    if w > 80 and h > 20:
+
+        cv2.rectangle(
+            image,
+            (x,y),
+            (x+w,y+h),
+            (0,255,0),
+            2
+        )
+
+cv2.namedWindow("Regions", cv2.WINDOW_NORMAL)
+cv2.imshow("Regions", image)
+cv2.resizeWindow("Regions", 1000, 800)
+
+
+
+cv2.drawContours(output, contours, -1, (0,255,0), 1)
+
+cv2.namedWindow("Contours", cv2.WINDOW_NORMAL)
+cv2.imshow("Contours", output)
+cv2.resizeWindow("Contours", 1000, 800)
+
+
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
+
