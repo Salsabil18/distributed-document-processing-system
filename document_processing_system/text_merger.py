@@ -1,25 +1,15 @@
-بدل أن يطبع النص على الشاشة:
+def save_text(texts):
 
-print(text)
+    with open(
+        "output/result.txt",
+        "w",
+        encoding="utf-8"
+    ) as file:
 
-سيجمع جميع النصوص:
+        for index,text in enumerate(texts):
 
-Region 1
+            file.write(f"========== Region {index+1} ==========\n")
 
-الجمهورية الجزائرية الديمقراطية الشعبية
+            file.write(text)
 
------------------------------------
-
-Region 2
-
-وزارة الداخلية
-
------------------------------------
-
-Region 3
-
-بطاقة إقامة
-
-ثم يحفظها داخل:
-
-output/result.txt
+            file.write("\n\n")
