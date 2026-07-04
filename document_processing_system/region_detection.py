@@ -1,0 +1,3 @@
+def detect_regions(image):
+    ...
+    return regions
