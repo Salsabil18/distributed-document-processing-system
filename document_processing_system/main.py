@@ -1,12 +1,15 @@
-image = load_image()
+def save_text(texts):
 
-processed = preprocess(image)
+    with open(
+        "output/result.txt",
+        "w",
+        encoding="utf-8"
+    ) as file:
 
-regions = detect_regions(processed)
+        for index,text in enumerate(texts):
 
-texts = []
+            file.write(f"========== Region {index+1} ==========\n")
 
-for region in regions:
-    texts.append(extract_text(region))
+            file.write(text)
 
-merge_text(texts)
+            file.write("\n\n")
