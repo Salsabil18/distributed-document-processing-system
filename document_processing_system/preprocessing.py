@@ -1,12 +1,25 @@
-image = load_image()
+import cv2
 
-processed = preprocess(image)
+def preprocess(image):
 
-regions = detect_regions(processed)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-texts = []
+    _, threshold = cv2.threshold(
+        gray,
+        0,
+        255,
+        cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU
+    )
 
-for region in regions:
-    texts.append(extract_text(region))
+    kernel = cv2.getStructuringElement(
+        cv2.MORPH_RECT,
+        (25,5)
+    )
 
-merge_text(texts)
+    dilated = cv2.dilate(
+        threshold,
+        kernel,
+        iterations=1
+    )
+
+    return dilated
