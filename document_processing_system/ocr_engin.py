@@ -1,0 +1,3 @@
+def extract_text(region):
+    ...
+    return text
