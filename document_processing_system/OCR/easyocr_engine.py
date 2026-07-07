@@ -1,24 +1,22 @@
-import cv2
-import pytesseract
+import easyocr
 
 from ocr.base_engine import OCREngine
 
 
-class TesseractEngine(OCREngine):
+class EasyOCREngine(OCREngine):
 
     def __init__(self):
 
-        pytesseract.pytesseract.tesseract_cmd = (
-            r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+        self.reader = easyocr.Reader(
+            ['ar', 'fr'],
+            gpu=False
         )
 
     def extract_text(self, image_path):
 
-        image = cv2.imread(image_path)
-
-        text = pytesseract.image_to_string(
-            image,
-            lang="ara"
+        result = self.reader.readtext(
+            image_path,
+            detail=0
         )
 
-        return text
+        return "\n".join(result)
